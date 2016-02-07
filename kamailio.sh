@@ -5,7 +5,7 @@ export KAMAILIO_SHR=${KAMAILIO_SHR:-64}
 export KAMAILIO_CFG=${KAMAILIO_CFG:-/etc/kamailio/kamailio.cfg}
 
 export RTP_PORT_RANGE_START=${RTP_PORT_RANGE_START:-10000}
-export RTP_PORT_RANGE_END=${RTP_PORT_RANGE_END:-49152}
+export RTP_PORT_RANGE_END=${RTP_PORT_RANGE_END:-19999}
 
 export PRIVATE_IPV4="${PRIVATE_IPV4:-$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)}"
 
@@ -23,8 +23,10 @@ if [ -n "$PUBLIC_IPV6" ]; then
   export PUBLIC_IPV6=::1
 fi
 
-export PUBLIC_PORT=${PUBLIC_PORT:-25060}
-export PRIVATE_PORT=${PRIVATE_PORT:-25060}
+export PUBLIC_TCP_PORT=${PUBLIC_TCP_PORT:-25060}
+export PRIVATE_TCP_PORT=${PRIVATE_TCP_PORT:-25060}
+export PUBLIC_TLS_PORT=${PUBLIC_TCP_PORT:-25061}
+export PRIVATE_TLS_PORT=${PRIVATE_TCP_PORT:-25061}
 
 # We always want this to be a known alias
 export XIP_PUBLIC_DNS=registrar.${PUBLIC_IPV4}.xip.io
