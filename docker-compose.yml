@@ -1,0 +1,13 @@
+# This requires docker-compose 1.6.0
+version: '2'
+services:
+  rtpproxy:
+    image: ianblenke/kamailio:latest
+    network_mode: host
+    command: /kamailio.sh rtpproxy
+  kamailio:
+    image: ianblenke/kamailio:latest
+    network_mode: host
+    environment:
+      SIP_DOMAIN: sip.example.com
+    command: /kamailio.sh
