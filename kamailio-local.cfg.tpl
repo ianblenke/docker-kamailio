@@ -7,10 +7,8 @@
 #!define WITH_TLS
 
 # Setup listening interfaces
-listen=tcp:${PRIVATE_IPV4}:${PRIVATE_TCP_PORT} advertise ${PUBLIC_IPV4}:${PUBLIC_TCP_PORT}
-listen=tls:${PRIVATE_IPV4}:${PRIVATE_TLS_PORT} advertise ${PUBLIC_IPV4}:${PUBLIC_TLS_PORT}
-listen=tcp:[${PUBLIC_IPV6}]:${PRIVATE_TCP_PORT}
-listen=tls:[${PUBLIC_IPV6}]:${PRIVATE_TLS_PORT}
+listen=tcp:${PRIVATE_IPV4}:${PRIVATE_TCP_PORT} tcp:[${PUBLIC_IPV6}]:${PRIVATE_TCP_PORT} advertise ${PUBLIC_IPV4}:${PUBLIC_TCP_PORT}
+listen=tls:${PRIVATE_IPV4}:${PRIVATE_TLS_PORT} tls:[${PUBLIC_IPV6}]:${PRIVATE_TLS_PORT} advertise ${PUBLIC_IPV4}:${PUBLIC_TLS_PORT}
 port=${PRIVATE_TCP_PORT}
 advertised_port=${PUBLIC_TCP_PORT}
 alias=${XIP_PUBLIC_DNS}
