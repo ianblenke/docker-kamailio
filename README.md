@@ -11,8 +11,7 @@ The `build.yml` is an example of how you can iterate locally with docker-compose
 
 There is no authentication enabled by default. Anything can register to this kamailio instance as it stands.
 
-This kamailio will respond to `sip:ANYTHING@registrar.A.B.C.D.xip.io:25060`, where ANYTHING is literally
-any username you wish, and A.B.C.D is the public IPV4 address of the server.
+This kamailio will respond to `sip:ANYTHING@registrar.A.B.C.D.xip.io:25060`, where ANYTHING is literally any username you wish, and A.B.C.D is the public IPV4 address of the server.
 
 Unfortunately, that does not point a DNS name at an IPV6 address. For that, you will need to setup your own DNS domain name record to point at the server.
 
