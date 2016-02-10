@@ -19,7 +19,7 @@ PUBLIC_IPV4="$(curl --fail -qs ipecho.net/plain)"
 export PUBLIC_IPV4
 
 export PUBLIC_IPV6="${PUBLIC_IPV6:-$(ip -6 addr show $(ip -6 route show default | grep -e '^default' | awk '{print $5}') | grep inet6 | grep global | awk '{print $2}' | grep -v -e '^::' | cut -d/ -f1)}"
-if [ -n "$PUBLIC_IPV6" ]; then
+if [ -z "$PUBLIC_IPV6" ]; then
   export PUBLIC_IPV6=::1
 fi
 
