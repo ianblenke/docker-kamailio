@@ -1,12 +1,27 @@
 # This requires docker-compose 1.6.0
 version: '2'
 services:
-  rtpproxy:
-    image: ianblenke/kamailio:latest
+  rtpengine:
+    #image: ianblenke/rtpengine:latest
+    build: rtpengine/
     network_mode: host
-    command: /kamailio.sh rtpproxy
+    privileged: true
+    environment:
+      RUN_RTPENGINE: "yes"
+      LISTEN_NG: 127.0.0.1:60000
+      LISTEN_CLI: 127.0.0.1:60001
+      TIMEOUT: 60
+      SILENT_TIMEOUT: 3600
+      FORK: "no"
+      TABLE: 40
+      NO_FALLBACK: "yes"
+      PORT_MIN: 10000
+      PORT_MAX: 19999
+      LOG_LEVEL: 6
+      LOG_FACILITY: local1
   kamailio:
-    image: ianblenke/kamailio:latest
+    #image: ianblenke/kamailio:latest
+    build: .
     network_mode: host
     environment:
       SIP_DOMAIN: sip.example.com
