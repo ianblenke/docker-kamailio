@@ -1,7 +1,7 @@
 FROM alpine
 MAINTAINER Ian Blenke <ian@blenke.com>
 
-ENV KAMAILIO_VERSION 4.3.4-r1
+ENV KAMAILIO_VERSION 4.3.5-r0
 ENV RTPPROXY_VERSION 2.0.0-r1
 
 RUN apk update && \
