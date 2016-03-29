@@ -5,18 +5,23 @@
 #!define WITH_NATSIPPING
 #!define WITH_PRESENCE
 #!define WITH_TLS
+#!define WITH_WEBSOCKETS
 
 # Setup listening interfaces
 listen=tcp:${PRIVATE_IPV4}:${PRIVATE_TCP_PORT} tcp:[${PUBLIC_IPV6}]:${PRIVATE_TCP_PORT} advertise ${PUBLIC_IPV4}:${PUBLIC_TCP_PORT}
 listen=tls:${PRIVATE_IPV4}:${PRIVATE_TLS_PORT} tls:[${PUBLIC_IPV6}]:${PRIVATE_TLS_PORT} advertise ${PUBLIC_IPV4}:${PUBLIC_TLS_PORT}
+listen=tcp:${PRIVATE_IPV4}:${PRIVATE_WS_PORT} tcp:[${PUBLIC_IPV6}]:${PRIVATE_WS_PORT} advertise ${PUBLIC_IPV4}:${PUBLIC_WS_PORT}
+listen=tls:${PRIVATE_IPV4}:${PRIVATE_WSS_PORT} tls:[${PUBLIC_IPV6}]:${PRIVATE_WSS_PORT} advertise ${PUBLIC_IPV4}:${PUBLIC_WSS_PORT}
 port=${PRIVATE_TCP_PORT}
 advertised_port=${PUBLIC_TCP_PORT}
 alias=${XIP_PUBLIC_DNS}
 alias=${SIP_DOMAIN}
 alias=${XIP_PUBLIC_DNS}:${PUBLIC_TCP_PORT}
 alias=${SIP_DOMAIN}:${PUBLIC_TCP_PORT}
+alias=${SIP_DOMAIN}:${PUBLIC_WS_PORT}
 alias=${XIP_PUBLIC_DNS}:${PUBLIC_TLS_PORT}
 alias=${SIP_DOMAIN}:${PUBLIC_TLS_PORT}
+alias=${SIP_DOMAIN}:${PUBLIC_WSS_PORT}
 
 # Tweak some core settings
 auto_bind_ipv6=1            # Auto-bind to all IPV6 interfaces
